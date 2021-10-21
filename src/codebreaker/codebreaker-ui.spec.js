@@ -16,6 +16,15 @@ describe("Codebreaker", () => {
     expect(resultado).toEqual("Ganaste!");
   });
 
+  it("Sin mensaje de ganador al iniciar", () => {
+    const resultado = getResultado();
+    expect(resultado).toEqual("");
+  });
+
+  afterEach(() => {
+    document.querySelector("#resultado").innerHTML = "";
+  });
+
   function arriesgo(numero) {
     const numero_elem = document.querySelector("#numero");
     const boton_elem = document.querySelector("#arriesgo");
