@@ -1,14 +1,16 @@
 import fs from "fs";
 describe("Codebreaker", () => {
-  it("muestra una bienvenida", () => {
+  beforeAll(() => {
     document.body.innerHTML = fs.readFileSync("codebreaker.html", "utf8");
+    require("../codebreaker/presenter");
+  });
+
+  it("muestra una bienvenida", () => {
     const h1 = document.querySelector("h1").innerHTML;
     expect(h1).toEqual("Codebreaker");
   });
 
   it("Arriesgo a ganador", () => {
-    document.body.innerHTML = fs.readFileSync("codebreaker.html", "utf8");
-    require("../codebreaker/presenter");
     arriesgo("5");
     const resultado = getResultado();
     expect(resultado).toEqual("Ganaste!");
